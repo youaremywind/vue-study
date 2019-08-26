@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- import vue package -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <style>
+        .red{
+            color: royalblue
+        }
+        .thin{
+            font-weight: 200;
+        }
+        .italic{
+            font-style: italic;
+        }
+        .active{
+            letter-spacing: 0.5em;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- vue指令之v-model和双向数据绑定 -->
+    <div id="app">
+        <!-- <h1 class="red thin">这是一个很大很大的H1</h1> -->
+        <!-- 第一种使用方式  直接传递一个数组 注意这里class 使用v-bind做数据绑定-->
+        <!-- <h1 :class="['thin','italic']">这是一个很大很大的H1</h1> -->
+        <!-- 第二种使用方式  数组中使用三元表达式-->
+        <!-- <h1 :class="['thin','italic',flag?'active':'']">这是一个很大很大的H1</h1> -->
+        <!-- 第三种使用方式  数组中使用对象来代替三元表达式-->
+        <!-- <h1 :class="['thin','italic',{'active':flag}]">这是一个很大很大的H1</h1> -->
+        <!-- 第四种使用方式  使用对象-->
+        <h1 :class="{'active':flag,'thin':true,'italic':false}">这是一个很大很大的H1</h1>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                flag: true
+            },
+            methods: {//定义可用的方法
+                
+            }
+        })
+
+    </script>
+</body>
+
+</html>
