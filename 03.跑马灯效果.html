@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- import vue package -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <!-- 默认无闪烁问题 -->
+        <h4 v-text="msg"></h4>
+        <input type="button" value="浪起来" @click="lang">
+        <input type="button" value="低调" @click="stop">
+    </div>
+
+    <script>
+        // 在vm实例中，如果想要获取data上的数据，或者想要调用methods中的方法，
+        // 必须通过this.数据属性名 或this.方法名 来进行访问，
+        // 这里的this就表示new 出来vm实例
+        // vm会监听data变化
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg: '猥琐发育别浪~~~~~',
+                intervalId: null//在data上定义定时器id
+            },
+            methods: {//定义可用的方法 
+                /*
+                // 1、this 指向问题
+                lang() {
+                    setInterval(function () {
+                        // 获取到头的第一个字符
+                        var start = this.msg.substring(0, 1)
+                        // 获取到后面所有的字符
+                        var end = this.msg.substring(1)
+                        // 重新拼接得到新的字符串 并赋值给this.msg
+                        this.msg = end + start
+                    }, 400)
+                },
+                lang() {
+                    // this 代表我们的vm实例
+                    // console.log(this.msg)
+                    // 1-1、给this赋值
+                    var _this = this
+                    setInterval(function () {
+                        // 获取到头的第一个字符
+                        var start = _this.msg.substring(0, 1)
+                        // 获取到后面所有的字符
+                        var end = _this.msg.substring(1)
+                        // 重新拼接得到新的字符串 并赋值给this.msg
+                        _this.msg = end + start
+                    }, 400)
+                },  */
+                // 箭头函数
+
+                lang() {
+                    // this 代表我们的vm实例
+                    // console.log(this.msg)
+                    if (this.intervalId) return;
+                    // 1-2、箭头函数内部的this 和 外部 this 保持一致
+                    this.intervalId = setInterval(() => {
+                        // 获取到头的第一个字符
+                        var start = this.msg.substring(0, 1)
+                        // 获取到后面所有的字符
+                        var end = this.msg.substring(1)
+                        // 重新拼接得到新的字符串 并赋值给this.msg
+                        this.msg = end + start
+                    }, 400)
+                },
+                // 停止定时器
+                stop() {
+                    clearInterval(this.intervalId)
+                    // 每当清除了定时器之后，需要重新把定时器赋值为null
+                    this.intervalId=null
+                }
+            }
+        })
+
+    </script>
+</body>
+
+</html>

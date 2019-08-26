@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- import vue package -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <style>
+        .inner {
+            height: 150px;
+            background-color: pink;
+        }
+
+        .outer {
+            padding: 40px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+
+        <!-- 使用 .stop 阻止冒泡 -->
+        <!-- <div class="inner" @click="divHandler">
+            <input type="button" value="戳他" @click.stop="btnHandler">
+        </div> -->
+        <!-- 使用 .prevent 阻止默认事件 -->
+        <!-- <a href="http://www.baidu.com" @click.prevent="linkClick">去百度</a> -->
+
+        <!-- 使用 .capture 实现捕获触发事件的机制 -->
+        <!-- <div class="inner" @click.capture="divHandler">
+            <input type="button" value="戳他" @click.stop="btnHandler">
+        </div> -->
+        <!-- 使用 .self 实现只有点击当前元素时，才会触发事件处理函数 -->
+        <!-- <div class="inner" @click.self="divHandler">
+            <input type="button" value="戳他" @click.stop="btnHandler">
+        </div> -->
+        <!-- 使用 .once 只触发一次事件处理函数 -->
+        <a href="http://www.baidu.com" @click.prevent.once="linkClick">去百度</a>
+
+        <!-- .stop 和 .self 的区别 -->
+        <!-- self 别让我被别人冒泡，stop别让其他人冒泡 -->
+        <!-- self 只会阻止自己身上冒泡行为的触发并不会真正阻止冒泡 -->
+        <!-- <div class="outer" @click="div2Handler">
+            <div class="inner" @click="divHandler">
+                <input type="button" value="戳他" @click.stop="btnHandler">
+            </div>
+        </div> -->
+        <div class="outer" @click="div2Handler">
+            <div class="inner" @click.self="divHandler">
+                <input type="button" value="戳他" @click="btnHandler">
+            </div>
+        </div>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg: '123!',
+            },
+            // 点击btn 会先弹出btn 然后弹出div 因为是冒泡
+            methods: {//定义可用的方法
+                divHandler() {
+                    alert('这是触发了 inner div')
+                },
+                btnHandler() {
+                    alert('这是触发了 inner btn')
+                },
+                linkClick() {
+                    alert('这是触发了链接的点击事件')
+                },
+                div2Handler() {
+                    alert('这是触发了 outer div')
+                }
+            }
+        })
+
+    </script>
+</body>
+
+</html>

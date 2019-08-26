@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- import vue package -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <style>
+    </style>
+</head>
+
+<body>
+    <!-- vue指令之v-model和双向数据绑定 -->
+    <div id="app">
+        <h4>{{ msg }}</h4>
+        <input type="text" v-model="n1">
+        <select v-model="opt">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select>
+        <input type="text" v-model="n2">
+        <input type="button" value="=" @click="calc">
+        <input type="text" v-model="result">
+
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg: '这是个简单的计算器demo',
+                n1: 0,
+                n2: 0,
+                result: 0,
+                opt: '+'
+            },
+            methods: {//定义可用的方法
+                calc(){
+                    // switch(this.opt){
+                    //     case '+' :
+                    //         this.result=parseInt(this.n1)+parseInt(this.n2)
+                    //         break;
+                    //     case '-' :
+                    //         this.result=parseInt(this.n1)-parseInt(this.n2)
+                    //         break;
+                    //     case '*' :
+                    //         this.result=parseInt(this.n1)*parseInt(this.n2)
+                    //         break;
+                    //     case '/' :
+                    //         this.result=parseInt(this.n1)/parseInt(this.n2)
+                    //         break;        
+                    // }
+                    // 投机取巧
+                    var codeStr = 'parseInt(this.n1)'+this.opt+'parseInt(this.n2)'        
+                    this.result=eval(codeStr)
+                }
+            }
+        })
+
+    </script>
+</body>
+
+</html>
