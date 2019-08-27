@@ -123,8 +123,13 @@
                     return newList
                 }
             }
-        })
+        });
+        // 过滤器的定义语法{{name|过滤器的名称}}
+        // Vue.filter('过滤器的名称', function () {})
+        // 过滤器中的fuction 第一个参数已经被规定死了永远都是过滤器管道符前面传递过来的数据
+        Vue.filter('过滤器的名称', function (data) {
 
+        })
     </script>
 </body>
 
