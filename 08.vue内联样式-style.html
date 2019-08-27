@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- import vue package -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <style>
+        .red{
+            color: royalblue
+        }
+        .thin{
+            font-weight: 200;
+        }
+        .italic{
+            font-style: italic;
+        }
+        .active{
+            letter-spacing: 0.5em;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- vue指令之v-model和双向数据绑定 -->
+    <div id="app">
+        <!-- 第一种使用方式  直接在元素上通过:style的样式，书写对象-->
+        <!-- <h1 :style="{color:'red','font-size':'40px'}">这是一个很大很大的H1</h1> -->
+        <!-- 第二种使用方式  将样式对象定义到data中直接引用到:stytle-->
+        <!-- <h1 :style="dataObject1">这是一个很大很大的H1</h1> -->
+        <!-- 第三种使用方式  在:style中通过数组，引用多个data上的样式对象-->
+        <h1 :style="[dataObject1,dataObject2]">这是一个很大很大的H1</h1>
+        
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                dataObject1: {color: 'red','font-size': '40px'},
+                dataObject2: {'font-style': 'italic'}
+            },
+            methods: {//定义可用的方法
+                
+            }
+        })
+
+    </script>
+</body>
+
+</html>
