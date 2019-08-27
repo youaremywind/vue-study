@@ -9,16 +9,19 @@
     <!-- import vue package -->
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <style>
-        .red{
+        .red {
             color: royalblue
         }
-        .thin{
+
+        .thin {
             font-weight: 200;
         }
-        .italic{
+
+        .italic {
             font-style: italic;
         }
-        .active{
+
+        .active {
             letter-spacing: 0.5em;
         }
     </style>
@@ -33,17 +36,17 @@
         <!-- <h1 :style="dataObject1">这是一个很大很大的H1</h1> -->
         <!-- 第三种使用方式  在:style中通过数组，引用多个data上的样式对象-->
         <h1 :style="[dataObject1,dataObject2]">这是一个很大很大的H1</h1>
-        
+
     </div>
     <script>
         var vm = new Vue({
             el: '#app',
             data: {
-                dataObject1: {color: 'red','font-size': '40px'},
-                dataObject2: {'font-style': 'italic'}
+                dataObject1: { color: 'red', 'font-size': '40px' },
+                dataObject2: { 'font-style': 'italic' }
             },
             methods: {//定义可用的方法
-                
+
             }
         })
 
